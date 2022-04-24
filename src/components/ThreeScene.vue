@@ -17,6 +17,7 @@ export default {
 
 <style lang="scss" scoped>
     canvas {
+        position: fixed;
         width: 100%;
         height: 100%;
     }

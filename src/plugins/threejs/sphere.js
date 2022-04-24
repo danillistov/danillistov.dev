@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import MoonTexture from '@/static/textures/moon.png';
 
 export function initSphere(elem) {
     const scene = new THREE.Scene();
@@ -16,8 +17,11 @@ export function initSphere(elem) {
     renderer.render(scene, camera);
 
     const geometry = new THREE.SphereGeometry(8, 64, 32, 6);
-    const material = new THREE.MeshBasicMaterial({ color: 0xf0, wireframe: true });
+    const texture = new THREE.TextureLoader().load(MoonTexture);
+    const material = new THREE.MeshBasicMaterial({ map: texture });
     const sphere = new THREE.Mesh(geometry, material);
+
+
 
     scene.add(sphere);
 

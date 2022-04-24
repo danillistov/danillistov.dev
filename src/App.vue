@@ -12,9 +12,4 @@ export default {
 
 <style lang="scss">
     @import "@/assets/scss/common.scss";
-    .main {
-        width: 100%;
-        height: 100vh;
-        background: black;
-    }
 </style>
