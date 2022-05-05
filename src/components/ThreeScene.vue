@@ -3,14 +3,19 @@
 </template>
 
 <script>
-import { initSphere } from '@/plugins/threejs/sphere.js';
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { initSphere } from '@/plugins/threejs/moon';
 
 export default {
     name: 'ThreeScene',
 
-    mounted() {
-        this.$nextTick().then(initSphere(this.$refs.scene));
+    async mounted() {
+        await this.$nextTick();
+
+        initSphere(this.$refs.scene);
+
+        addEventListener('resize', () => {
+            initSphere(this.$refs.scene)
+        })
     },
 };
 </script>
@@ -18,6 +23,7 @@ export default {
 <style lang="scss" scoped>
     canvas {
         position: fixed;
+        right: 0;
         width: 100%;
         height: 100%;
     }
