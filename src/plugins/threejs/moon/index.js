@@ -1,6 +1,5 @@
 import gsap from 'gsap';
 import * as THREE from 'three';
-import createAtmosphereObject from './objects/atmosphere';
 import createSphereObject from './objects/sphere';
 
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
@@ -12,6 +11,8 @@ import noiseVertexShader from '@/static/shaders/noiseVertex.glsl';
 import noiseFragmentShader from '@/static/shaders/noiseFragment.glsl';
 
 export function initSphere(elem) {
+    const mouse = { x: 0, y: 0 };
+
     const scene = new THREE.Scene();
 
     scene.background = new THREE.Color(0x0d0d0d);
@@ -29,7 +30,6 @@ export function initSphere(elem) {
     camera.position.setZ(25);
 
     // Composer
-
     const composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
 
@@ -55,18 +55,9 @@ export function initSphere(elem) {
 
     scene.add(group);
 
+    // Moon object create
     const sphere = createSphereObject(THREE);
-
     group.add(sphere);
-
-    const atmosphere = createAtmosphereObject(THREE);
-    atmosphere.scale.set(1.01, 1.01, 1.01);
-    group.add(atmosphere);
-
-    const mouse = {
-        x: 0,
-        y: 0,
-    };
 
     function animate() {
         counter += 0.01;
