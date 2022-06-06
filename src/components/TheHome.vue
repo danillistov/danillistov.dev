@@ -1,15 +1,12 @@
 <template>
     <div class="home">
-        <ThreeScene />
+        <div class="main-title"></div>
     </div>
 </template>
 
 <script>
-import ThreeScene from "@/components/ThreeScene.vue";
-
 export default {
     name: "Home",
-    components: { ThreeScene }
 };
 </script>
 
@@ -17,5 +14,11 @@ export default {
     .home {
         width: 100%;
         height: 100%;
+    }
+
+    .main-title {
+        font-size: 32px;
+        text-align: center;
+        color: #fff;
     }
 </style>

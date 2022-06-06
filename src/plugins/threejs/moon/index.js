@@ -27,7 +27,7 @@ export function initSphere(elem) {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
 
-    camera.position.setZ(25);
+    camera.position.setZ(30);
 
     // Composer
     const composer = new EffectComposer(renderer);
