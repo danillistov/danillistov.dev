@@ -32,10 +32,11 @@ export default {
         margin-left: auto;
 
         &__item {
-            padding: 0 .5rem;
+            padding: 0 1rem;
 
             & a {
-                color: #fff;
+                font-size: 2rem;
+                text-transform: uppercase;
             }
         }
     }

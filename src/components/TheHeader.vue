@@ -19,6 +19,6 @@ export default {
 <style lang="scss" scoped>
     .header {
         display: flex;
-        padding: 1rem;
+        padding: 2.4rem;
     }
 </style>
