@@ -32,11 +32,13 @@ export function initSphere(elem) {
     const manager = new THREE.LoadingManager();
 
     manager.onLoad = function() {
-        const preloader = document.querySelector('#scene-preloader');
-        preloader.style.opacity = 0;
         setTimeout(() => {
-            preloader.style.display = 'none';
-        }, 600);
+            const preloader = document.querySelector('#scene-preloader');
+            preloader.style.opacity = 0;
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 600);
+        }, 1000);
     }
 
     // Composer
