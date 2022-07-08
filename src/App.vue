@@ -4,11 +4,13 @@
         <ThreeBackgroundScene />
         <router-view></router-view>
    </div>
+   <Preloader />
 </template>
 
 <script>
 import ThreeBackgroundScene from '@/components/ThreeScene.vue';
 import Header from '@/components/TheHeader.vue';
+import Preloader from '@/components/common/ThreeScenePreloader.vue';
 
 export default {
     name: 'App',
@@ -16,6 +18,7 @@ export default {
     components: {
         ThreeBackgroundScene,
         Header,
+        Preloader,
     },
 };
 </script>

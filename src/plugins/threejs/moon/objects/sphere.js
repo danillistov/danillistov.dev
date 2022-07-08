@@ -2,7 +2,7 @@ import MoonTexture from '@/static/textures/moon.png';
 import vertexShader from '@/static/shaders/vertex.glsl';
 import fragmentShader from '@/static/shaders/fragment.glsl';
 
-export default function sphere(three) {
+export default function sphere(three, manager) {
     if (!three) return;
     const THREE = three;
 
@@ -11,7 +11,7 @@ export default function sphere(three) {
         fragmentShader,
         uniforms: {
             globeTexture: {
-                value: new THREE.TextureLoader().load(MoonTexture),
+                value: new THREE.TextureLoader(manager).load(MoonTexture),
             },
         },
     });

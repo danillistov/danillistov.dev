@@ -29,6 +29,16 @@ export function initSphere(elem) {
 
     camera.position.setZ(30);
 
+    const manager = new THREE.LoadingManager();
+
+    manager.onLoad = function() {
+        const preloader = document.querySelector('#scene-preloader');
+        preloader.style.opacity = 0;
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 600);
+    }
+
     // Composer
     const composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
@@ -56,7 +66,7 @@ export function initSphere(elem) {
     scene.add(group);
 
     // Moon object create
-    const sphere = createSphereObject(THREE);
+    const sphere = createSphereObject(THREE, manager);
     group.add(sphere);
 
     function animate() {
