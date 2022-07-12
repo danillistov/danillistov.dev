@@ -10,7 +10,7 @@ import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import noiseVertexShader from '@/static/shaders/noiseVertex.glsl';
 import noiseFragmentShader from '@/static/shaders/noiseFragment.glsl';
 
-export function initSphere(elem) {
+export function initSphere(elem, vue) {
     const mouse = { x: 0, y: 0 };
 
     const scene = new THREE.Scene();
@@ -33,11 +33,7 @@ export function initSphere(elem) {
 
     manager.onLoad = function() {
         setTimeout(() => {
-            const preloader = document.querySelector('#scene-preloader');
-            preloader.style.opacity = 0;
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 600);
+            vue.isReady = true;
         }, 1000);
     }
 

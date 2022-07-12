@@ -8,10 +8,22 @@ import { initSphere } from '@/plugins/threejs/moon';
 export default {
     name: 'ThreeScene',
 
+    data() {
+        return {
+            isReady: false,
+        };
+    },
+
+    watch: {
+        isReady(val) {
+            this.$emit('three-scene-ready', val);
+        },
+    },
+
     async mounted() {
         await this.$nextTick();
 
-        initSphere(this.$refs.scene);
+        initSphere(this.$refs.scene, this);
 
         addEventListener('resize', () => {
             initSphere(this.$refs.scene);

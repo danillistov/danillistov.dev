@@ -1,5 +1,5 @@
 <template>
-    <div id="scene-preloader">
+    <div id="scene-preloader" :class="{'_hidden': !show}">
         <div class="svg-wrapper">
                 <svg class="moon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111.77 111.77">
                 <circle cx="55.89" cy="55.89" r="55.64" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width=".5" stroke-dasharray="4"/>
@@ -34,10 +34,17 @@
 <script>
 export default {
     name: 'ThreeScenePreloader',
+
+    props: {
+        show: {
+            type: Boolean,
+            default: true,
+        },
+    },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     $cubic: cubic-bezier(0.5, 0.8, 0.5, 0.2);
 
     @keyframes spin {
@@ -60,7 +67,12 @@ export default {
         height: 100%;
         background: #fff;
         opacity: 1;
-        transition: opacity .6s ease-in-out;
+        transition: .6s cubic-bezier(.67,.13,.81,.73);
+
+        &._hidden {
+            opacity: 0;
+            transform: translateY(100%);
+        }
 
         .svg-wrapper {
             position: relative;
@@ -77,7 +89,7 @@ export default {
                 animation-name: spin;
                 animation-duration: 2s;
                 animation-iteration-count: infinite;
-                animation-timing-function: $cubic;
+                animation-timing-function: cubic-bezier(.14,.37,.52,.88);
             }
         }
     }

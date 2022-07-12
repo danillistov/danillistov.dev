@@ -1,10 +1,10 @@
 <template>
     <Header />
     <div class="main">
-        <ThreeBackgroundScene />
+        <ThreeBackgroundScene @three-scene-ready="onThreeSceneReady"/>
         <router-view></router-view>
    </div>
-   <Preloader />
+   <Preloader :show="!isThreeSceneReady" />
 </template>
 
 <script>
@@ -19,6 +19,18 @@ export default {
         ThreeBackgroundScene,
         Header,
         Preloader,
+    },
+
+    data() {
+        return {
+            isThreeSceneReady: false,
+        };
+    },
+
+    methods: {
+        onThreeSceneReady(val) {
+            this.isThreeSceneReady = val;
+        },
     },
 };
 </script>
