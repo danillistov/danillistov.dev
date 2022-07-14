@@ -4,6 +4,7 @@
             v-for="item in navs"
             :key="`main-nav-item-${item.id}`"
             class="main-nav__item"
+            :class="{'_active': $route.name === item.name}"
         >
             <router-link :to="item.path">{{ item.name }}</router-link>
         </li>
@@ -21,8 +22,51 @@ export default {
                 { id: 2, name: 'About', path: '/about' },
                 { id: 3, name: 'Contacts', path: '/contacts' },
             ],
+            lastScrollTop: 0,
+            nextWheelDelta: 0,
+            prevWheelDelta: 0,
         };
     },
+
+    mounted() {
+        addEventListener('wheel', (event) => {
+            if (event.deltaY < 0) {
+                this.prevWheelDelta += event.deltaY;
+                if (this.prevWheelDelta <= -450) {
+                     this.toPrevRoute();
+                     this.prevWheelDelta = 0;
+                 }
+            } else if (event.deltaY > 0) {
+                 this.nextWheelDelta += event.deltaY;
+                 if (this.nextWheelDelta >= 450) {
+                     this.toNextRoute();
+                     this.nextWheelDelta = 0;
+                 }
+            }
+        });
+    },
+
+    methods: {
+        toNextRoute() {
+            const currentNav = this.navs.find((n) => n.name === this.$route.name);
+            const nextRoute = currentNav.id + 1 > this.navs.length
+                ? this.navs[0]
+                : this.navs.find((n) => currentNav.id + 1 === n.id);
+            const nextRouteName = nextRoute?.name || 'Home';
+
+            this.$router.push({ name: nextRouteName });
+        },
+
+        toPrevRoute() {
+            const currentNav = this.navs.find((n) => n.name === this.$route.name);
+            const prevRoute = currentNav.id - 1 === 0
+                ? this.navs[this.navs.length - 1]
+                : this.navs.find((n) => currentNav.id - 1 === n.id);
+            const prevRouteName = prevRoute?.name || 'Home';
+
+            this.$router.push({ name: prevRouteName });
+        },
+    }
 };
 </script>
 
@@ -37,6 +81,21 @@ export default {
             & a {
                 font-size: 2rem;
                 text-transform: uppercase;
+                &:after {
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    max-width: 0;
+                    height: 2px;
+                    background-color: #fff;
+                    transition: .3s ease;
+                }
+            }
+
+            &._active {
+                & > a:after {
+                    max-width: 100%;
+                }
             }
         }
     }

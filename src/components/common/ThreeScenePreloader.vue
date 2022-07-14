@@ -65,19 +65,26 @@ export default {
         justify-content: center;
         width: 100%;
         height: 100%;
-        background: #fff;
+        background: rgba(255, 255, 255, 1);
         opacity: 1;
-        transition: .6s cubic-bezier(.67,.13,.81,.73);
+        transition: .6s cubic-bezier(.67, .13, .81, .73);
 
         &._hidden {
-            opacity: 0;
-            transform: translateY(100%);
+            background: rgba(255, 255, 255, 0);
+            visibility: hidden;
+
+            .svg-wrapper {
+                opacity: 0;
+                transform: translateY(100%);
+            }
         }
 
         .svg-wrapper {
             position: relative;
             width: 160px;
             height: 160px;
+            opacity: 1;
+            transition: .3s ease-in-out .5s;
 
             svg {
                 position: absolute;
@@ -89,7 +96,7 @@ export default {
                 animation-name: spin;
                 animation-duration: 2s;
                 animation-iteration-count: infinite;
-                animation-timing-function: cubic-bezier(.14,.37,.52,.88);
+                animation-timing-function: cubic-bezier(.14, .37, .52, .88);
             }
         }
     }
