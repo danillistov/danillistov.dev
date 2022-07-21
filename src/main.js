@@ -1,10 +1,12 @@
 import { createApp } from 'vue';
-import App from './App.vue';
 
+import App from './App.vue';
 import router from './router';
+import i18n from './locales/i18n';
 
 const app = createApp(App);
 app.use(router);
+app.use(i18n);
 app.mount('#app');
 
 app.config.globalProperties.$colorTheme = {
@@ -16,6 +18,4 @@ app.config.globalProperties.$colorTheme = {
     success: '#00B000',
     error: '#E74C3C',
 };
-
-console.log(app);
 

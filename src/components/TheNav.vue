@@ -6,7 +6,7 @@
             class="main-nav__item"
             :class="{'_active': $route.name === item.name}"
         >
-            <router-link :to="item.path">{{ item.name }}</router-link>
+            <router-link :to="item.path">{{ $t(item.key) }}</router-link>
         </li>
     </ul>
 </template>
@@ -18,9 +18,9 @@ export default {
     data() {
         return {
             navs: [
-                { id: 1, name: 'Home', path: '/' },
-                { id: 2, name: 'About', path: '/about' },
-                { id: 3, name: 'Contacts', path: '/contacts' },
+                { id: 1, key: 'home', name: 'Home', path: '/' },
+                { id: 2, key: 'about', name: 'About', path: '/about' },
+                { id: 3, key: 'contacts', name: 'Contacts', path: '/contacts' },
             ],
             lastScrollTop: 0,
             nextWheelDelta: 0,
@@ -32,13 +32,13 @@ export default {
         addEventListener('wheel', (event) => {
             if (event.deltaY < 0) {
                 this.prevWheelDelta += event.deltaY;
-                if (this.prevWheelDelta <= -450) {
+                if (this.prevWheelDelta <= -350) {
                      this.toPrevRoute();
                      this.prevWheelDelta = 0;
                  }
             } else if (event.deltaY > 0) {
                  this.nextWheelDelta += event.deltaY;
-                 if (this.nextWheelDelta >= 450) {
+                 if (this.nextWheelDelta >= 350) {
                      this.toNextRoute();
                      this.nextWheelDelta = 0;
                  }
@@ -49,6 +49,11 @@ export default {
     methods: {
         toNextRoute() {
             const currentNav = this.navs.find((n) => n.name === this.$route.name);
+
+            if (!currentNav) {
+                return;
+            }
+
             const nextRoute = currentNav.id + 1 > this.navs.length
                 ? this.navs[0]
                 : this.navs.find((n) => currentNav.id + 1 === n.id);
@@ -59,6 +64,11 @@ export default {
 
         toPrevRoute() {
             const currentNav = this.navs.find((n) => n.name === this.$route.name);
+
+            if (!currentNav) {
+                return;
+            }
+
             const prevRoute = currentNav.id - 1 === 0
                 ? this.navs[this.navs.length - 1]
                 : this.navs.find((n) => currentNav.id - 1 === n.id);
