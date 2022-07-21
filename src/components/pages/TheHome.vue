@@ -2,6 +2,7 @@
     <div class="home">
         <div class="main-title">
             <TypingTextAnimation
+                v-if="false"
                 text="Title typing animation!"
                 :speed="1"
                 :color="$colorTheme.black"
