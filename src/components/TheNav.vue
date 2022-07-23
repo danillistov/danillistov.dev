@@ -6,14 +6,28 @@
             class="main-nav__item"
             :class="{'_active': $route.name === item.name}"
         >
-            <router-link :to="item.path">{{ $t(item.key) }}</router-link>
+            <router-link :to="item.path">
+                <transition name="fade">
+                    {{ $t(item.key) }}
+                </transition>
+            </router-link>
+        </li>
+
+        <li class="main-nav__item">
+            <LangSwitcher />
         </li>
     </ul>
 </template>
 
 <script>
+import LangSwitcher from '@/components/common/LangSwitcher.vue';
+
 export default {
     name: 'TheNav',
+
+    components: {
+        LangSwitcher,
+    },
 
     data() {
         return {
@@ -76,7 +90,7 @@ export default {
 
             this.$router.push({ name: prevRouteName });
         },
-    }
+    },
 };
 </script>
 
