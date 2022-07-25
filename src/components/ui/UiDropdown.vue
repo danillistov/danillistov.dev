@@ -1,19 +1,16 @@
 <template>
     <div class="ui-dropdown">
-        <select
-            :name="name"
-            class="ui-dropdown__select"
-            @change="onChange"
-        >
-            <option
-                v-for="(option, i) in options"
+        <button class="ui-dropdown__button">{{ currentLang }}</button>
+        <ul class="ui-dropdown__list">
+            <li
+                v-for="(option, i) in langs"
                 :key="`dropdown-option-${i}`"
-                :value="option.value"
-                :selected="option.active"
+                class="ui-dropdown__item"
+                @click="onSelectLang(option.value)"
             >
                 {{ option.label }}
-            </option>
-        </select>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -33,9 +30,22 @@ export default {
         },
     },
 
+    data() {
+        return {
+            currentLang: 'en',
+        };
+    },
+
+    computed: {
+        langs() {
+            return this.options.filter((lang) => lang.value !== this.currentLang);
+        },
+    },
+
     methods: {
-        onChange(event) {
-            this.$emit('selected-value', event.target.value);
+        onSelectLang(lang) {
+            this.currentLang = lang;
+            this.$emit('selected-value', this.currentLang);
         },
     },
 };
@@ -43,14 +53,11 @@ export default {
 
 <style lang="scss" scoped>
     .ui-dropdown {
-        display: flex;
-        align-items: center;
-        min-width: 5rem;
-
-        &__select {
-            flex: 1;
-            height: 100%;
+        &__button {
+            min-width: 5rem;
             padding: .6rem 1.6rem;
+            background: #fff;
+            color: #000;
             border-radius: .6rem;
         }
     }
