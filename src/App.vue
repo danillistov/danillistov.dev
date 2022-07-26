@@ -27,9 +27,22 @@ export default {
         };
     },
 
+    mounted() {
+        this.checkCurrentLanguage();
+    },
+
     methods: {
         onThreeSceneReady(val) {
             this.isThreeSceneReady = val;
+        },
+
+        checkCurrentLanguage() {
+            const supportedLangs = ['en', 'ru', 'jp'];
+            const lang = localStorage.getItem('lang');
+
+            if (!lang || !supportedLangs.includes(lang)) return;
+
+            this.$i18n.locale = lang;
         },
     },
 };
