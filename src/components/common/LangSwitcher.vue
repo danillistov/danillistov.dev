@@ -3,7 +3,7 @@
         <UiDropdown
             :options="langs"
             name="lang"
-            @selected-value="onLangChange"
+            @selected-value="onLanguageChange"
         />
     </div>
 </template>
@@ -29,8 +29,9 @@ export default {
     },
 
     methods: {
-        onLangChange(lang = 'en') {
+        onLanguageChange(lang = 'en') {
             this.$i18n.locale = lang;
+            localStorage.setItem('lang', this.$i18n.locale);
         },
     }
 };
