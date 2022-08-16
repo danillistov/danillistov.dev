@@ -2,11 +2,16 @@ import { createApp } from 'vue';
 
 import App from './App.vue';
 import router from './router';
+import store from './store/store';
 import i18n from './locales/i18n';
 
 const app = createApp(App);
-app.use(router);
-app.use(i18n);
+const plugins = [router, i18n, store];
+
+plugins.forEach((plugin) => {
+    app.use(plugin);
+});
+
 app.mount('#app');
 
 app.config.globalProperties.$colorTheme = {
