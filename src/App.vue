@@ -4,10 +4,12 @@
         <ThreeBackgroundScene @three-scene-ready="onThreeSceneReady"/>
         <router-view></router-view>
    </div>
-   <Preloader :show="!isThreeSceneReady" />
+   <Preloader :show="getLoadingState" />
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 import ThreeBackgroundScene from '@/components/ThreeScene.vue';
 import Header from '@/components/TheHeader.vue';
 import Preloader from '@/components/common/ThreeScenePreloader.vue';
@@ -21,19 +23,17 @@ export default {
         Preloader,
     },
 
-    data() {
-        return {
-            isThreeSceneReady: false,
-        };
-    },
+    computed: mapGetters(['getLoadingState']),
 
     mounted() {
         this.checkCurrentLanguage();
     },
 
     methods: {
+        ...mapActions(['showOverlay']),
+
         onThreeSceneReady(val) {
-            this.isThreeSceneReady = val;
+            this.showOverlay(val);
         },
 
         checkCurrentLanguage() {

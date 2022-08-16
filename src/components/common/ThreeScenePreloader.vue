@@ -67,15 +67,17 @@ export default {
         height: 100%;
         background: rgba(255, 255, 255, 1);
         opacity: 1;
-        transition: .6s cubic-bezier(.67, .13, .81, .73);
+        transition: .2s cubic-bezier(.67, .13, .81, .73);
 
         &._hidden {
             background: rgba(255, 255, 255, 0);
             visibility: hidden;
+            transition: .6s cubic-bezier(.67, .13, .81, .73);
 
             .svg-wrapper {
                 opacity: 0;
                 transform: translateY(100%);
+                transition: .3s ease-in-out .5s;
             }
         }
 
@@ -84,7 +86,7 @@ export default {
             width: 160px;
             height: 160px;
             opacity: 1;
-            transition: .3s ease-in-out .5s;
+            transition: .3s ease-in-out .2s;
 
             svg {
                 position: absolute;

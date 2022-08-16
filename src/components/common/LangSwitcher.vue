@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 import UiDropdown from '@/components/ui/UiDropdown.vue';
 
 export default {
@@ -29,9 +31,16 @@ export default {
     },
 
     methods: {
+        ...mapActions(['showOverlay']),
+
         onLanguageChange(lang = 'en') {
-            this.$i18n.locale = lang;
-            localStorage.setItem('lang', this.$i18n.locale);
+            this.showOverlay(true);
+
+            setTimeout(() => {
+                this.$i18n.locale = lang;
+                localStorage.setItem('lang', this.$i18n.locale);
+                this.showOverlay(false);
+            }, 1000);
         },
     }
 };

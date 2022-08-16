@@ -10,12 +10,12 @@ export default {
 
     data() {
         return {
-            isReady: false,
+            isNotReady: true,
         };
     },
 
     watch: {
-        isReady(val) {
+        isNotReady(val) {
             this.$emit('three-scene-ready', val);
         },
     },

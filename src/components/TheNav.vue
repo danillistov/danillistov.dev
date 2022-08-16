@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 import LangSwitcher from '@/components/common/LangSwitcher.vue';
 
 export default {
@@ -61,6 +63,8 @@ export default {
     },
 
     methods: {
+        ...mapActions(['showOverlay']),
+
         toNextRoute() {
             const currentNav = this.navs.find((n) => n.name === this.$route.name);
 
@@ -73,7 +77,7 @@ export default {
                 : this.navs.find((n) => currentNav.id + 1 === n.id);
             const nextRouteName = nextRoute?.name || 'Home';
 
-            this.$router.push({ name: nextRouteName });
+            this.routerPush(nextRouteName);
         },
 
         toPrevRoute() {
@@ -88,7 +92,11 @@ export default {
                 : this.navs.find((n) => currentNav.id - 1 === n.id);
             const prevRouteName = prevRoute?.name || 'Home';
 
-            this.$router.push({ name: prevRouteName });
+            this.routerPush(prevRouteName);
+        },
+
+        routerPush(route) {
+            this.$router.push({ name: route });
         },
     },
 };

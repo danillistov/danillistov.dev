@@ -33,7 +33,7 @@ export function initSphere(elem, vue) {
 
     manager.onLoad = function() {
         setTimeout(() => {
-            vue.isReady = true;
+            vue.isNotReady = false;
         }, 1000);
     }
 
