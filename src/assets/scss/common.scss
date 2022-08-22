@@ -5,5 +5,11 @@
 @import './common/transitions';
 
 body {
+    overflow: hidden;
     background: #fff;
+    width: 100%;
+    max-width: 1280px;
+    height: 100vh;
+    max-height: 100vh;
+    margin: 0;
 }

@@ -20,8 +20,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
-
 import LangSwitcher from '@/components/common/LangSwitcher.vue';
 
 export default {
@@ -45,26 +43,10 @@ export default {
     },
 
     mounted() {
-        addEventListener('wheel', (event) => {
-            if (event.deltaY < 0) {
-                this.prevWheelDelta += event.deltaY;
-                if (this.prevWheelDelta <= -350) {
-                     this.toPrevRoute();
-                     this.prevWheelDelta = 0;
-                 }
-            } else if (event.deltaY > 0) {
-                 this.nextWheelDelta += event.deltaY;
-                 if (this.nextWheelDelta >= 350) {
-                     this.toNextRoute();
-                     this.nextWheelDelta = 0;
-                 }
-            }
-        });
+        addEventListener('wheel', this.navigation);
     },
 
     methods: {
-        ...mapActions(['showOverlay']),
-
         toNextRoute() {
             const currentNav = this.navs.find((n) => n.name === this.$route.name);
 
@@ -97,7 +79,18 @@ export default {
 
         routerPush(route) {
             this.$router.push({ name: route });
+
+            setTimeout(() => {
+                addEventListener('wheel', this.navigation);
+            }, 500);
         },
+
+        navigation(event) {
+            removeEventListener('wheel', this.navigation);
+
+            if (event.deltaY < 0) this.toPrevRoute();
+            else if (event.deltaY > 0) this.toNextRoute();
+        }
     },
 };
 </script>
