@@ -1,10 +1,18 @@
 <template>
-    <div class="contacts"></div>
+    <div class="contacts">
+        <SocialIcons />
+    </div>
 </template>
 
 <script>
+import SocialIcons from '@/components/common/SocialIcons.vue';
+
 export default {
     name: 'Contacts',
+
+    components: {
+        SocialIcons,
+    },
 };
 </script>
 
