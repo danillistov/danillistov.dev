@@ -1,11 +1,15 @@
 <template>
-    <div class="social-icons">
+    <div
+        class="social-icons"
+        :class="{'_active': isShowen}"
+    >
         <a
             v-for="(icon, i) in icons"
             :key="`social-icon-${i}`"
             :href="icon.link"
             target="_blank"
             class="social-icons__wrap"
+            :style="`transition-delay: .${i + 2}s`"
         >
             <img :src="icon.path" :alt="icon.name" class="social-icons__icon">
         </a>
@@ -31,8 +35,15 @@ export default {
                 { name: 'twitter', path: twitter, link: 'https://twitter.com/danialfolige' },
                 { name: 'instagram', path: instagram, link: 'https://www.instagram.com/danillistov/' },
             ],
+            isShowen: false,
         };
     },
+
+    mounted() {
+        setTimeout(() => {
+            this.isShowen = true;
+        }, 0);
+    }
 };
 </script>
 
@@ -43,6 +54,19 @@ export default {
         left: 50%;
         display: flex;
         transform: translate(-50%, -50%);
+
+        &._active > .social-icons__wrap {
+            opacity: 1;
+            transform: translateY(0);
+            transition-duration: .3s;
+            transition-property: opacity, transform;
+            transition-timing-function: ease;
+        }
+
+        &__wrap {
+            opacity: 0;
+            transform: translateY(-15px);
+        }
 
         &__wrap:hover > .social-icons__icon {
             transform: translateY(-10px);

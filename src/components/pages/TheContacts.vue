@@ -1,6 +1,10 @@
 <template>
     <div class="contacts">
-        <SocialIcons />
+        <Transition name="fade">
+            <SocialIcons
+                v-if="showSocialIcons"
+            />
+        </Transition>
     </div>
 </template>
 
@@ -13,9 +17,17 @@ export default {
     components: {
         SocialIcons,
     },
+
+    data() {
+        return {
+            showSocialIcons: false,
+        };
+    },
+
+    async mounted() {
+        await this.$nextTick();
+
+        this.showSocialIcons = true;
+    },
 };
 </script>
-
-<style lang="scss" scoped>
-
-</style>
