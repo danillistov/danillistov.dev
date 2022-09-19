@@ -20,5 +20,6 @@ export default {
     .header {
         display: flex;
         padding: 2.4rem;
+        max-height: $header-hide;
     }
 </style>

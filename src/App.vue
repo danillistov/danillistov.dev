@@ -54,4 +54,11 @@ export default {
 
 <style lang="scss">
     @import "@/assets/scss/common.scss";
+
+    .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - $header-hide);
+    }
 </style>
