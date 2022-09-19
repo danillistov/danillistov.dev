@@ -39,8 +39,7 @@ $breakpoints: (
     @font-face {
         font-family: $alias;
         src:
-            url('~~assets/fonts/' + $name + '.woff') format('woff'),
-            url('~~assets/fonts/' + $name + '.woff2') format('woff2');
+            url('~~assets/fonts/' + $name + '.ttf') format('ttf');
         font-weight: $weight;
         font-style: normal;
         font-display: swap;
