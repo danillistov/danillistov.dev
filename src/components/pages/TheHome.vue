@@ -1,57 +1,26 @@
 <template>
     <div class="home">
         <div class="main-title">
-            <p ref="text" class="main-title__text"></p>
+            <TypingText :strings='mainText'/>
         </div>
     </div>
 </template>
 
 <script>
-import Typed from 'typed.js';
-import { mapGetters } from 'vuex';
+import TypingText from '@/components/common/TypingTextAnimation.vue';
 
 export default {
     name: "Home",
 
+    components: {
+        TypingText,
+    },
+
     data() {
         return {
-            typed: null,
-            stringChangeDelay: 600,
+            mainText: ['Hello! My name is Danil&nbsp;Listov.', 'I am Frontend-developer.'],
         };
     },
-
-    computed: {
-        ...mapGetters(['getLoadingState']),
-    },
-
-    watch: {
-        getLoadingState() {
-            if (!this.getLoadingState) {
-                setTimeout(() => {
-                    this.initTypingAnimation();
-                }, 300);
-            } else {
-                this.typed && this.typed.destroy();
-                this.typed = null;
-            }
-        }
-    },
-
-    mounted() {
-        if (!this.getLoadingState) {
-            this.initTypingAnimation();
-        }
-    },
-
-    methods: {
-        initTypingAnimation() {
-            this.typed = new Typed(this.$refs.text, {
-                strings: [`Hello! My name is Danil&nbsp;Listov.<br> ^${this.stringChangeDelay}`, 'I am Frontend-developer.'],
-                typeSpeed: 30,
-                showCursor: false,
-            });
-        },
-    }
 };
 </script>
 
