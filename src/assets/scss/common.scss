@@ -3,6 +3,7 @@
 @import './common/mixins';
 @import './common/reset';
 @import './common/transitions';
+@import './common/fonts';
 
 body {
     overflow: hidden;
@@ -12,4 +13,5 @@ body {
     height: 100vh;
     max-height: 100vh;
     margin: 0;
+    font-family: $base-font;
 }

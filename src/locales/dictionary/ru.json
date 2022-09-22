@@ -1,5 +1,7 @@
 {
     "home": "Главная",
     "about": "Пару слов",
-    "contacts": "Связаться"
+    "contacts": "Связаться",
+    "main-text-first": "",
+    "main-text-second": ""
 }

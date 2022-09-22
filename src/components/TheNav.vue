@@ -33,12 +33,8 @@ export default {
         return {
             navs: [
                 { id: 1, key: 'home', name: 'Home', path: '/' },
-                { id: 2, key: 'about', name: 'About', path: '/about' },
-                { id: 3, key: 'contacts', name: 'Contacts', path: '/contacts' },
+                { id: 2, key: 'contacts', name: 'Contacts', path: '/contacts' },
             ],
-            lastScrollTop: 0,
-            nextWheelDelta: 0,
-            prevWheelDelta: 0,
         };
     },
 

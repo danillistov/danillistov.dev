@@ -1,5 +1,7 @@
 {
     "home": "Home",
     "about": "About",
-    "contacts": "Contacts"
+    "contacts": "Contacts",
+    "main-text-first": "",
+    "main-text-second": ""
 }

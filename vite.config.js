@@ -15,4 +15,11 @@ export default defineConfig({
             '@': PATH_SRC,
         },
     },
-})
+    css: {
+        preprocessorOptions: {
+            scss: {
+                additionalData: `@import "@/assets/scss/common/_variables.scss";`
+            },
+        },
+    },
+});

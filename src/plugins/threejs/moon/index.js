@@ -27,7 +27,7 @@ export function initSphere(elem, vue) {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
 
-    camera.position.setZ(30);
+    camera.position.setZ(25);
 
     const manager = new THREE.LoadingManager();
 
