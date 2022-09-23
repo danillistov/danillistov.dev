@@ -1,7 +1,11 @@
 <template>
     <div class="home">
         <div class="main-title">
-            <TypingText :strings='mainText'/>
+            <TypingText
+                :strings="mainText"
+                :queries="{ showCursor: false }"
+                :typeSpeed="currentLang === 'jp' ? 60 : 30"
+            />
         </div>
     </div>
 </template>
@@ -16,10 +20,14 @@ export default {
         TypingText,
     },
 
-    data() {
-        return {
-            mainText: ['Hello! My name is Danil&nbsp;Listov.', 'I am Frontend-developer.'],
-        };
+    computed: {
+        mainText() {
+            return [this.$t('main-text-first'), this.$t('main-text-second')];
+        },
+
+        currentLang() {
+            return this.$i18n.locale || 'en';
+        },
     },
 };
 </script>

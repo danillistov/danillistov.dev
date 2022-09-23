@@ -21,6 +21,16 @@ export default {
             type: Number,
             default: 600,
         },
+
+        typeSpeed: {
+            type: Number,
+            default: 40,
+        },
+
+        queries: {
+            type: Object,
+            default: () => ({}),
+        },
     },
 
     data() {
@@ -66,8 +76,8 @@ export default {
         initTypingAnimation(strings = []) {
             this.typed = new Typed(this.$refs.text, {
                 strings,
-                typeSpeed: 30,
-                showCursor: false,
+                typeSpeed: this.typeSpeed,
+                ...this.queries,
             });
         },
     },
