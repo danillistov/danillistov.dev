@@ -10,8 +10,13 @@ import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import noiseVertexShader from '@/static/shaders/noiseVertex.glsl';
 import noiseFragmentShader from '@/static/shaders/noiseFragment.glsl';
 
-export function initSphere(elem, vue) {
+export function initSphere(elem, vue, mq = 'desktop') {
+    if (!elem) {
+        return;
+    }
+
     const mouse = { x: 0, y: 0 };
+    const moonPosition = mq === 'desktop' ? 25 : mq === 'tablet' ? 40 : 50;
 
     const scene = new THREE.Scene();
 
@@ -27,7 +32,7 @@ export function initSphere(elem, vue) {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
 
-    camera.position.setZ(25);
+    camera.position.setZ(moonPosition);
 
     const manager = new THREE.LoadingManager();
 
