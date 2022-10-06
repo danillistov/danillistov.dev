@@ -2,11 +2,7 @@
     <Header />
     <div class="main">
         <ThreeBackgroundScene @three-scene-ready="onThreeSceneReady"/>
-        <router-view v-slot="{ Component }">
-            <transition name="fade" mode="out-in">
-                <component :is="Component"></component>
-            </transition>
-        </router-view>
+        <router-view />
    </div>
    <Preloader :show="getLoadingState" />
 </template>

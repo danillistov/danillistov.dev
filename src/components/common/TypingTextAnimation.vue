@@ -1,5 +1,5 @@
 <template>
-    <div class="typing-text-animation">
+    <div class="typing-text-animation" :class="{'_ru': $i18n.locale === 'ru'}">
         <p ref="text"></p>
     </div>
 </template>
@@ -83,3 +83,14 @@ export default {
     },
 };
 </script>
+
+<style lang="scss" scoped>
+    .typing-text-animation {
+        text-transform: uppercase;
+
+        &._ru {
+            font-family: sans-serif;
+            font-size: 3rem;
+        }
+    }
+</style>
