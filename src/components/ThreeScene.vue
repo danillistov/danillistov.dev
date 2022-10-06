@@ -4,6 +4,7 @@
 
 <script>
 import { initSphere } from '@/plugins/threejs/moon';
+import { debounce } from '@/helpers';
 
 export default {
     name: 'ThreeScene',
@@ -11,6 +12,7 @@ export default {
     data() {
         return {
             isNotReady: true,
+            currentWindowSize: null,
         };
     },
 
@@ -20,14 +22,27 @@ export default {
         },
     },
 
+    created() {
+        this.currentWindowSize = window.screen.width;
+    },
+
     async mounted() {
         await this.$nextTick();
 
-        initSphere(this.$refs.scene, this);
+        initSphere(this.$refs.scene, this, this.mq);
 
         addEventListener('resize', () => {
-            initSphere(this.$refs.scene);
+            this.currentWindowSize = window.screen.width;
+            debounce(initSphere(this.$refs.scene, this, this.mq), 250, true);
         });
+    },
+
+    computed: {
+        mq() {
+            return this.currentWindowSize >= 1000
+                ? 'desktop' : this.currentWindowSize >= 700 && this.currentWindowSize < 1000
+                ? 'tablet' : 'mobile';
+        },
     },
 };
 </script>

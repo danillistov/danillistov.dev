@@ -1,73 +1,85 @@
 <template>
     <div class="typing-text-animation">
-        <div
-            v-if="text"
-            :style="queries"
-            class="typing-text-animation__text"
-        >
-            {{ text }}
-        </div>
+        <p ref="text"></p>
     </div>
 </template>
 
 <script>
+import Typed from 'typed.js';
+import { mapGetters } from 'vuex';
+
 export default {
     name: "TypingTextAnimation",
 
     props: {
-        text: {
-            type: String,
-            default: '',
+        strings: {
+            type: Array,
+            default: () => [],
         },
 
-        speed: {
+        typingDelay: {
             type: Number,
-            default: 2,
+            default: 600,
         },
 
-        color: {
+        typeSpeed: {
             type: Number,
-            default: '#000000',
+            default: 40,
+        },
+
+        queries: {
+            type: Object,
+            default: () => ({}),
         },
     },
 
-    computed: {
-        textLength() {
-            return this.text && this.text.length;
-        },
+    data() {
+        return {
+            typed: null,
+        };
+    },
 
-        queries() {
-            return `animation:
-                typing ${this.speed}s steps(${this.textLength}),
-                blink .5s step-end infinite alternate;
-                color: ${this.color};
-                width: ${this.textLength + 0.5}ch`;
+    computed: {
+        ...mapGetters(['getLoadingState']),
+
+        stringsWithDelay() {
+            return this.strings.map((str, i) => {
+                if (i !== this.strings.length - 1) {
+                    return  `${str} ^${this.typingDelay}`;
+                }
+
+                return str;
+            });
+        },
+    },
+
+    watch: {
+        getLoadingState() {
+            if (!this.getLoadingState) {
+                setTimeout(() => {
+                    this.initTypingAnimation(this.stringsWithDelay);
+                }, 300);
+            } else {
+                this.typed && this.typed.destroy();
+                this.typed = null;
+            }
+        }
+    },
+
+    mounted() {
+        if (!this.getLoadingState) {
+            this.initTypingAnimation(this.stringsWithDelay);
+        }
+    },
+
+    methods: {
+        initTypingAnimation(strings = []) {
+            this.typed = new Typed(this.$refs.text, {
+                strings,
+                typeSpeed: this.typeSpeed,
+                ...this.queries,
+            });
         },
     },
 };
 </script>
-
-<style lang="scss">
-    .typing-text-animation {
-
-        &__text {
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 3px solid;
-            font-family: monospace;
-            font-size: 2em;
-        }
-    }
-
-    @keyframes typing {
-        from {
-            width: 0;
-        }
-    }
-
-    @keyframes blink {
-        50% {
-            border-color: transparent;
-        }
-    }
-</style>

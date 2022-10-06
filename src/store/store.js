@@ -15,7 +15,6 @@ const store = createStore({
 
     actions: {
         showOverlay({ commit }, value) {
-            console.log(value);
             commit('SET_OVERLAY_STATE', value);
         },
     },

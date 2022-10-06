@@ -1,3 +1,5 @@
-@include font("Raleway", "Raleway-Bold", 700);
-@include font("Raleway", "Raleway-SemiBold", 600);
-@include font("Raleway", "Raleway-Regular", 400);
+@include font("Raleway", "Raleway-Bold", 700, "ttf");
+@include font("Raleway", "Raleway-SemiBold", 600, "ttf");
+@include font("Raleway", "Raleway-Regular", 400, "ttf");
+@include font("Moon", "Moon-Bold", 500, "otf");
+@include font("Moon", "Raleway-Light", 400, "otf");
