@@ -140,7 +140,7 @@ export default {
 
         &__list {
             position: absolute;
-            left: -50%;
+            left: -100%;
             visibility: hidden;
             opacity: 0;
             margin-top: 1.5rem;
