@@ -12,7 +12,7 @@
                 v-for="(option, i) in langs"
                 :key="`dropdown-option-${i}`"
                 class="ui-dropdown__item"
-                @click="onSelectLang(option.value)"
+                @click="changeLanguage(option.value)"
             >
                 <svg v-if="option.value === 'en'" viewBox="0 0 53 45" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M26.3191 0.110588C35.7257 -0.403561 47.2899 0.693476 51.6119 7.29324C55.6992 13.5346 48.8841 23.355 45.9999 30C43.7876 35.0969 42.5634 37.5556 37.0796 40.7747C30.4522 44.6651 21.284 46.4143 13.7957 43.6578C6.23727 40.8754 3.08986 34.091 1.42977 27.6517C-0.169099 21.4499 0.416945 14.9927 5.07638 9.83679C10.0731 4.30771 17.7224 0.580469 26.3191 0.110588Z" fill="white" fill-opacity="0.4"/>
@@ -67,7 +67,7 @@ export default {
     },
 
     methods: {
-        onSelectLang(lang) {
+        changeLanguage(lang) {
             this.currentLang = lang;
             this.$emit('selected-value', this.currentLang);
             this.isOpened = false;

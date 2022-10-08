@@ -10,7 +10,7 @@ import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import noiseVertexShader from '@/static/shaders/noiseVertex.glsl';
 import noiseFragmentShader from '@/static/shaders/noiseFragment.glsl';
 
-export function initSphere(elem, vue, mq = 'desktop') {
+export function initSphere(elem, { changeThreeSceneState: onReady }, mq = 'desktop') {
     if (!elem) {
         return;
     }
@@ -38,7 +38,7 @@ export function initSphere(elem, vue, mq = 'desktop') {
 
     manager.onLoad = function() {
         setTimeout(() => {
-            vue.isNotReady = false;
+            onReady(false);
         }, 1000);
     }
 

@@ -1,5 +1,8 @@
 <template>
-    <div class="typing-text-animation" :class="{'_ru': $i18n.locale === 'ru'}">
+    <div
+        class="typing-text-animation"
+        :class="{'_ru': $i18n.locale === 'ru'}"
+    >
         <p ref="text"></p>
     </div>
 </template>

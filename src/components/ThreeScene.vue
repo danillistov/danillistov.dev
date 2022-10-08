@@ -31,6 +31,12 @@ export default {
 
         initSphere(this.$refs.scene, this, this.mq);
 
+        setTimeout(() => {
+            if (this.isNotReady) {
+                this.handleThreeSceneError();
+            }
+        }, 10000);
+
         addEventListener('resize', () => {
             this.currentWindowSize = window.screen.width;
             debounce(initSphere(this.$refs.scene, this, this.mq), 250, true);
@@ -42,6 +48,16 @@ export default {
             return this.currentWindowSize >= 1000
                 ? 'desktop' : this.currentWindowSize >= 700 && this.currentWindowSize < 1000
                 ? 'tablet' : 'mobile';
+        },
+    },
+
+    methods: {
+        handleThreeSceneError() {
+            throw new Error('[handleThreeSceneError]: Something went wrong.');
+        },
+
+        changeThreeSceneState(val) {
+            this.isNotReady = val;
         },
     },
 };
