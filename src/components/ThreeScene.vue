@@ -29,7 +29,7 @@ export default {
     async mounted() {
         await this.$nextTick();
 
-        initSphere(this.$refs.scene, this, this.mq);
+        initSphere(this.$refs.scene, this.changeThreeSceneState, this.mq);
 
         setTimeout(() => {
             if (this.isNotReady) {
@@ -39,7 +39,7 @@ export default {
 
         addEventListener('resize', () => {
             this.currentWindowSize = window.screen.width;
-            debounce(initSphere(this.$refs.scene, this, this.mq), 250, true);
+            debounce(initSphere(this.$refs.scene, this.changeThreeSceneState, this.mq), 250, true);
         });
     },
 
