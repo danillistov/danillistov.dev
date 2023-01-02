@@ -38,8 +38,12 @@ export default {
         }, 10000);
 
         addEventListener('resize', () => {
-            this.currentWindowSize = window.screen.width;
-            debounce(initSphere(this.$refs.scene, this.changeThreeSceneState, this.mq), 250, true);
+            this.currentWindowSize = window.screen.width || 1000;
+            debounce(
+                initSphere(this.$refs.scene, this.changeThreeSceneState, this.mq),
+                250,
+                true
+            );
         });
     },
 
@@ -53,6 +57,7 @@ export default {
 
     methods: {
         handleThreeSceneError() {
+            alert('Something went wrong. Please, reload the page.');
             throw new Error('[handleThreeSceneError]: Something went wrong.');
         },
 
