@@ -5,6 +5,8 @@ import router from './router';
 import store from './store/store';
 import i18n from './locales/i18n';
 
+import "./assets/scss/common.scss";
+
 const app = createApp(App);
 const plugins = [router, i18n, store];
 

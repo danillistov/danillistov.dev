@@ -87,13 +87,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .typing-text-animation {
         text-transform: uppercase;
-
-        &._ru {
-            font-family: sans-serif;
-            font-size: 3rem;
-        }
     }
 </style>

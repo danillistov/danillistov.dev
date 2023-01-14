@@ -49,8 +49,6 @@ export default {
 </script>
 
 <style lang="scss">
-    @import "@/assets/scss/common.scss";
-
     .main {
         display: flex;
         justify-content: center;

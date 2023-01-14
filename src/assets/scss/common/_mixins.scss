@@ -1,7 +1,6 @@
 /* Media queries mixins */
 
 $breakpoints: (
-    //xxs: 0,
     xs: 360px,
     sm: 767px,
     md: 991px,
@@ -9,8 +8,6 @@ $breakpoints: (
     xl: 1439px,
     xxl: 1919px,
 );
-
-$font-path: "../../fonts/";
 
 @mixin respond-to($name, $bp: $breakpoints) {
     $max: breakpoint-max($name, $bp);
@@ -34,17 +31,6 @@ $font-path: "../../fonts/";
         display: block;
         width: 100%;
         padding-top: ($height / $width) * 100%;
-    }
-}
-
-@mixin font($alias, $name, $weight, $format) {
-    @font-face {
-        font-family: $alias;
-        src:
-            url($font-path + $name + '.' + $format) format($format);
-        font-weight: $weight;
-        font-style: normal;
-        font-display: swap;
     }
 }
 
