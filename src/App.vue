@@ -1,8 +1,8 @@
 <template>
-    <Header />
     <div class="main">
         <ThreeBackgroundScene @three-scene-ready="onThreeSceneReady"/>
-        <router-view />
+
+        <InformationTable />
    </div>
    <Preloader :show="getLoadingState" />
 </template>
@@ -11,16 +11,16 @@
 import { mapActions, mapGetters } from 'vuex';
 
 import ThreeBackgroundScene from '@/components/ThreeScene.vue';
-import Header from '@/components/TheHeader.vue';
 import Preloader from '@/components/common/ThreeScenePreloader.vue';
+import InformationTable from '@/components/common/InformationTable.vue';
 
 export default {
     name: 'App',
 
     components: {
         ThreeBackgroundScene,
-        Header,
         Preloader,
+        InformationTable,
     },
 
     computed: mapGetters(['getLoadingState']),
@@ -53,6 +53,6 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: calc(100vh - $header-hide);
+        height: 100vh;
     }
 </style>

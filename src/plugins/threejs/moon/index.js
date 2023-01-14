@@ -16,7 +16,7 @@ export function initSphere(elem, onReady, mq = 'desktop') {
     }
 
     const mouse = { x: 0, y: 0 };
-    const moonPosition = mq === 'desktop' ? 25 : mq === 'tablet' ? 40 : 50;
+    const moonPosition = mq === 'desktop' ? 30 : mq === 'tablet' ? 40 : 50;
 
     const scene = new THREE.Scene();
 
