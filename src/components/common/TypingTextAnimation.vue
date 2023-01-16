@@ -80,6 +80,9 @@ export default {
             this.typed = new Typed(this.$refs.text, {
                 strings,
                 typeSpeed: this.typeSpeed,
+                onComplete: () => {
+                    this.$emit('complete', true);
+                },
                 ...this.queries,
             });
         },
