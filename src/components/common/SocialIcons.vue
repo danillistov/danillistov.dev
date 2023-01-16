@@ -49,11 +49,7 @@ export default {
 
 <style lang="scss" scoped>
     .social-icons {
-        position: absolute;
-        top: 50%;
-        left: 50%;
         display: flex;
-        transform: translate(-50%, -50%);
 
         &._active > .social-icons__wrap {
             opacity: 1;
@@ -73,8 +69,8 @@ export default {
         }
 
         &__icon {
-            width: 4rem;
-            height: 4rem;
+            width: 3rem;
+            height: 3rem;
             padding: 1.5rem;
             transition: .2s ease-in-out;
             cursor: pointer;
