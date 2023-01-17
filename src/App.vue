@@ -2,7 +2,7 @@
     <div class="main">
         <ThreeBackgroundScene @three-scene-ready="onThreeSceneReady"/>
 
-        <InformationTable />
+        <router-view />
    </div>
    <Preloader :show="getLoadingState" />
 </template>
