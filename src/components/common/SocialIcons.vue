@@ -74,6 +74,11 @@ export default {
             padding: 1.5rem;
             transition: .2s ease-in-out;
             cursor: pointer;
+
+            @include respond-to(sm) {
+                width: 2rem;
+                height: 2rem;
+            }
         }
     }
 </style>

@@ -54,5 +54,13 @@ export default {
         justify-content: center;
         align-items: center;
         height: 100vh;
+
+        @include respond-to(md) {
+            padding: 2rem;
+        }
+
+        @include respond-to(sm) {
+            padding: 1.2rem;
+        }
     }
 </style>

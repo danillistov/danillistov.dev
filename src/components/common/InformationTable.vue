@@ -13,11 +13,9 @@
             <LanguageSelector />
         </div>
         <div class="information-table__content" :class="{'_visible': showContent}">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid magni aut recusandae dolores aliquam iure repellat voluptas consequuntur natus molestiae impedit nihil earum est, nostrum perferendis ab! Quisquam, nemo quae?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid magni aut recusandae dolores aliquam iure repellat voluptas consequuntur natus molestiae impedit nihil earum est, nostrum perferendis ab! Quisquam, nemo quae?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid magni aut recusandae dolores aliquam iure repellat voluptas consequuntur natus molestiae impedit nihil earum est, nostrum perferendis ab! Quisquam, nemo quae?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid magni aut recusandae dolores aliquam iure repellat voluptas consequuntur natus molestiae impedit nihil earum est, nostrum perferendis ab! Quisquam, nemo quae?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid magni aut recusandae dolores aliquam iure repellat voluptas consequuntur natus molestiae impedit nihil earum est, nostrum perferendis ab! Quisquam, nemo quae?
+            <p>Я занимаюсь разработкой клиентксой части, приемущественно на фреймворке Vue.js. и его экосистеме.</p>
+            <p>Имею опыт разработки различного рода приложений: SPA, MPA, SSR-приложений, CRM-систем и многое другое.</p>
+            <p>Мои скилы: JavaScript (es6 и больше), Vue.js, Nuxt.js, HTML5, CSS3, SCSS, PUG, Vite, Gulp, Webpack</p>
         </div>
 
         <div class="information-table__contacts" :class="{'_visible': showContent}">
@@ -61,12 +59,17 @@ export default {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 80vw;
-    height: 80vh;
+    max-width: 127.9rem;
+    height: 85vh;
     padding: 2rem;
     background: rgba($color: #F2F2F2, $alpha: .2);
     border-radius: 2rem;
     color: #000;
+
+    @include respond-to(md) {
+        height: 100%;
+        box-sizing: border-box;
+    }
 
     &__contacts {
         margin-top: auto;
@@ -79,22 +82,46 @@ export default {
     }
 
     &__title {
+        margin-bottom: 3rem;
         font-size: 3.6rem;
-        margin-bottom: 1rem;
+        font-weight: bold;
+
+        @include respond-to(lg) {
+            font-size: 2.4rem;
+        }
+
+        @include respond-to(sm) {
+            font-size: 1.8rem;
+        }
     }
 
     &__content {
         overflow: hidden;
-        font-size: 1.8rem;
         max-width: 70%;
         max-height: 60%;
+        font-size: 1.8rem;
         opacity: 0;
         transform: translateY(-10px);
         transition: .6s ease;
 
+        & > p {
+            margin-bottom: 1rem;
+        }
+
         &._visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        @include respond-to(lg) {
+            max-width: 80%;
+            max-height: 80%;
+            font-size: 1.4rem;
+        }
+
+        @include respond-to(sm) {
+            max-width: 100%;
+            font-size: 1.2rem;
         }
     }
 
