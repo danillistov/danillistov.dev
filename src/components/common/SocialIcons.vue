@@ -78,6 +78,7 @@ export default {
             @include respond-to(sm) {
                 width: 2rem;
                 height: 2rem;
+                padding: 1rem;
             }
         }
     }
