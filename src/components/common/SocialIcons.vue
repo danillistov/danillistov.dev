@@ -1,7 +1,7 @@
 <template>
     <div
         class="social-icons"
-        :class="{'_active': isShowen}"
+        :class="{'_active': isShown}"
     >
         <a
             v-for="(icon, i) in icons"
@@ -35,13 +35,13 @@ export default {
                 { name: 'twitter', path: twitter, link: 'https://twitter.com/danialfolige' },
                 { name: 'instagram', path: instagram, link: 'https://www.instagram.com/danillistov/' },
             ],
-            isShowen: false,
+            isShown: false,
         };
     },
 
     mounted() {
         setTimeout(() => {
-            this.isShowen = true;
+            this.isShown = true;
         }, 0);
     }
 };

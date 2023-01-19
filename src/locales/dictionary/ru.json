@@ -1,7 +1,4 @@
 {
-    "home": "Главная",
-    "about": "Пару слов",
-    "contacts": "Связаться",
-    "main-text-first": "Привет, меня зовут Данил Листов.",
-    "main-text-second": "Я Фронтендер."
+    "title": "Hello! I'am Danil Listov!",
+    "content": "<p>I'm Frontend engineer who specializes in the Vue.js JavaScript framework for building user interfaces and single-page applications. I have expertise in creating interactive and dynamic web applications using Vue.js and its associated ecosystem.</p><p>I also have strong knowledge of HTML, CSS, and JavaScript. Can use different front-end technologies and frameworks for building UI which strikes a balance between aesthetics and functionality, making it simple and enjoyable for users to interact with.</p>"
 }

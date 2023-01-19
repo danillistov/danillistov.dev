@@ -3,7 +3,7 @@
         <div class="information-table__top">
             <h1 class="information-table__title">
                 <TypingTextAnimation
-                    :strings="['Hello, i am Danil Listov!']"
+                    :strings="[$t('title')]"
                     :queries="{ showCursor: false }"
                     :type-speed="50"
                     @complete="onTitleTypingComplete"
@@ -12,10 +12,11 @@
 
             <LanguageSelector />
         </div>
-        <div class="information-table__content" :class="{'_visible': showContent}">
-            <p>Я занимаюсь разработкой клиентксой части, приемущественно на фреймворке Vue.js. и его экосистеме.</p>
-            <p>Имею опыт разработки различного рода приложений: SPA, MPA, SSR-приложений, CRM-систем и многое другое.</p>
-            <p>Мои скилы: JavaScript (es6 и больше), Vue.js, Nuxt.js, HTML5, CSS3, SCSS, PUG, Vite, Gulp, Webpack</p>
+        <div
+            class="information-table__content"
+            :class="{'_visible': showContent}"
+            v-html="$t('content')"
+        >
         </div>
 
         <div class="information-table__contacts" :class="{'_visible': showContent}">
@@ -42,6 +43,18 @@ export default {
         return {
             showContent: false,
         };
+    },
+
+    computed: {
+        currentLang() {
+            return this.$i18n.locale || 'en';
+        },
+    },
+
+    watch: {
+        currentLang() {
+            this.showContent = false;
+        },
     },
 
     methods: {
@@ -104,8 +117,8 @@ export default {
         transform: translateY(-10px);
         transition: .6s ease;
 
-        & > p {
-            margin-bottom: 1rem;
+        & > :deep(p) {
+            margin-bottom: 2rem;
         }
 
         &._visible {
