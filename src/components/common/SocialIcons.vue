@@ -62,6 +62,14 @@ export default {
         &__wrap {
             opacity: 0;
             transform: translateY(-15px);
+
+            &:first-child > img {
+                padding-left: 0;
+            }
+
+            &:last-child > img {
+                padding-right: 0;
+            }
         }
 
         &__wrap:hover > .social-icons__icon {

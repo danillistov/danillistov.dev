@@ -20,13 +20,13 @@
         </div>
 
         <div class="information-table__contacts" :class="{'_visible': showContent}">
-            <SocialIcons />
+            <ContactsBlock />
         </div>
     </div>
 </template>
 
 <script>
-import SocialIcons from '@/components/common/SocialIcons.vue';
+import ContactsBlock from '@/components/common/ContactsBlock.vue';
 import LanguageSelector from '@/components/common/LanguageSelector.vue';
 import TypingTextAnimation from '@/components/common/TypingTextAnimation.vue';
 
@@ -34,7 +34,7 @@ export default {
     name: 'InformationTable',
 
     components: {
-        SocialIcons,
+        ContactsBlock,
         LanguageSelector,
         TypingTextAnimation,
     },
