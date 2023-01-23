@@ -12,6 +12,9 @@
 
             <LanguageSelector />
         </div>
+
+        <ProjectsList />
+
         <div
             class="information-table__content"
             :class="{'_visible': showContent}"
@@ -29,6 +32,7 @@
 import ContactsBlock from '@/components/common/ContactsBlock.vue';
 import LanguageSelector from '@/components/common/LanguageSelector.vue';
 import TypingTextAnimation from '@/components/common/TypingTextAnimation.vue';
+import ProjectsList from '@/components/common/ProjectsList.vue';
 
 export default {
     name: 'InformationTable',
@@ -37,6 +41,7 @@ export default {
         ContactsBlock,
         LanguageSelector,
         TypingTextAnimation,
+        ProjectsList,
     },
 
     data() {
