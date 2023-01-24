@@ -12,6 +12,8 @@ html {
   }
 
   @include respond-to(md) {
+      overflow: hidden;
+      width: 100%;
       font-size: 1.302083vw;
   }
 

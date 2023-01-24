@@ -113,6 +113,10 @@ export default {
         @include respond-to(sm) {
             font-size: 1.8rem;
         }
+
+        @include respond-to(xs) {
+            font-size: 1.4rem;
+        }
     }
 
     &__content {
