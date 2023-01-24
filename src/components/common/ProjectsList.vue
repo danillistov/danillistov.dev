@@ -1,7 +1,7 @@
 <template>
     <div class="projects">
         <div class="projects__label">Projects:</div>
-        <div ref="text" class="projects__text"></div>
+        <a ref="text" href="/" target="_blank" class="projects__text"></a>
     </div>
 </template>
 
@@ -14,13 +14,9 @@ export default {
     data() {
         return {
             phrases: [
-                'Neo,',
-                'sooner or later',
-                'you\'re going to realize',
-                'just as I did',
-                'that there\'s a difference',
-                'between knowing the path',
-                'and walking the path'
+                'https://new.krost.ru',
+                'https://samolet.ru',
+                'https://glorax.com',
             ],
         };
     },
@@ -33,14 +29,6 @@ export default {
 
         ts.start();
     },
-
-    // methods: {
-    //     startAnimation(ts) {
-
-
-    //         ts.
-    //     },
-    // }
 }
 </script>
 

@@ -8,6 +8,10 @@ class TextScramble {
     }
 
     start(speed = 800) {
+        if (this.el.href) {
+            this.el.href = this.phrases[this.counter];
+        }
+
         this.setText(this.phrases[this.counter]).then(() => {
             setTimeout(this.start.bind(this), speed);
         });

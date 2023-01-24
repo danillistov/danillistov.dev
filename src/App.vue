@@ -60,6 +60,7 @@ export default {
         }
 
         @include respond-to(sm) {
+            align-items: flex-start;
             padding: 1.2rem;
         }
     }

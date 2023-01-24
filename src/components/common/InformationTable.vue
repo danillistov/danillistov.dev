@@ -20,7 +20,7 @@
         >
         </div>
 
-        <div class="information-table__projects">
+        <div class="information-table__projects" :class="{'_visible': showContent}">
             <ProjectsList />
         </div>
 
@@ -145,10 +145,21 @@ export default {
         }
     }
 
-    &__contacts {
+    &__projects {
         opacity: 0;
         transform: translateY(-10px);
         transition: .6s .3s ease;
+
+        &._visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    &__contacts {
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: .6s .6s ease;
 
         &._visible {
             opacity: 1;
