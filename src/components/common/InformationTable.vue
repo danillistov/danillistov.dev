@@ -91,6 +91,10 @@ export default {
         box-sizing: border-box;
     }
 
+    @include respond-to(sm) {
+        height: calc(100% - 40px);
+    }
+
     &__contacts {
         margin-top: auto;
     }
