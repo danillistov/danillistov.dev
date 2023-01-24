@@ -1,5 +1,6 @@
 <template>
     <div class="projects">
+        <div class="projects__label">Projects:</div>
         <div ref="text" class="projects__text"></div>
     </div>
 </template>
@@ -10,18 +11,9 @@ import TextScramble from '@/plugins/scramble/scrambleText.js';
 export default {
     name: 'ProjectsList',
 
-    async mounted() {
-        await this.$nextTick();
-
-        const element = this.$refs.text;
-        const ts = new TextScramble(element);
-
-        this.startAnimation(ts);
-    },
-
-    methods: {
-        startAnimation(ts) {
-            const phrases = [
+    data() {
+        return {
+            phrases: [
                 'Neo,',
                 'sooner or later',
                 'you\'re going to realize',
@@ -29,20 +21,39 @@ export default {
                 'that there\'s a difference',
                 'between knowing the path',
                 'and walking the path'
-            ];
+            ],
+        };
+    },
 
-            let counter = 0;
+    async mounted() {
+        await this.$nextTick();
 
-            const next = () => {
-                ts.setText(phrases[counter]).then(() => {
-                    setTimeout(next, 800);
-                });
+        const element = this.$refs.text;
+        const ts = new TextScramble(element, this.phrases);
 
-                counter = (counter + 1) % phrases.length;
-            }
+        ts.start();
+    },
 
-            next();
-        },
-    }
+    // methods: {
+    //     startAnimation(ts) {
+
+
+    //         ts.
+    //     },
+    // }
 }
 </script>
+
+<style lang="scss" scoped>
+    .projects {
+        display: flex;
+
+        &__label {
+            font-weight: bold;
+        }
+
+        &__text {
+            margin-left: 1rem;
+        }
+    }
+</style>

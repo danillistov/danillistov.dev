@@ -1,8 +1,18 @@
 class TextScramble {
-    constructor(el) {
+    constructor(el, phrases) {
         this.el = el;
+        this.phrases = phrases;
         this.chars = '!<>-_\\/[]{}—=+*^?#________';
         this.update = this.update.bind(this);
+        this.counter = 0;
+    }
+
+    start(speed = 800) {
+        this.setText(this.phrases[this.counter]).then(() => {
+            setTimeout(this.start.bind(this), speed);
+        });
+
+        this.counter = (this.counter + 1) % this.phrases.length;
     }
 
     setText(newText) {

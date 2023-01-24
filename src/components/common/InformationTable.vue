@@ -13,13 +13,15 @@
             <LanguageSelector />
         </div>
 
-        <ProjectsList />
-
         <div
             class="information-table__content"
             :class="{'_visible': showContent}"
             v-html="$t('content')"
         >
+        </div>
+
+        <div class="information-table__projects">
+            <ProjectsList />
         </div>
 
         <div class="information-table__contacts" :class="{'_visible': showContent}">
