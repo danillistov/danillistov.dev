@@ -38,7 +38,7 @@ export default {
             return [
                 { label: 'EN', value: 'en', active: this.$i18n.locale === 'en' },
                 { label: 'RU', value: 'ru', active: this.$i18n.locale === 'ru' },
-                { label: 'JP', value: 'jp', active: this.$i18n.locale === 'jp' },
+                // { label: 'JP', value: 'jp', active: this.$i18n.locale === 'jp' },
             ];
         },
 

@@ -1,6 +1,6 @@
 <template>
     <div class="projects">
-        <div class="projects__label">Projects:</div>
+        <div class="projects__label">{{ $t('projects') }}:</div>
         <a ref="text" href="/" target="_blank" class="projects__text"></a>
     </div>
 </template>
