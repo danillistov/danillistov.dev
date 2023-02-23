@@ -14,7 +14,7 @@ export default {
     data() {
         return {
             phrases: [
-                'https://new.krost.ru',
+                'https://krost.ru',
                 'https://samolet.ru',
                 'https://glorax.com',
             ],
