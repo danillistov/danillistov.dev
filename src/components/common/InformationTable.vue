@@ -79,12 +79,15 @@ export default {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 127.9rem;
     height: 85vh;
     padding: 2rem;
     background: rgba($color: #F2F2F2, $alpha: .2);
     border-radius: 2rem;
     color: #000;
+
+    @include respond-to(xxl) {
+        max-width: 127.9rem;
+    }
 
     @include respond-to(md) {
         height: 100%;
