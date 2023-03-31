@@ -129,7 +129,6 @@ export default {
         font-size: 1.8rem;
         opacity: 0;
         transform: translateY(-10px);
-        transition: .6s ease;
 
         & > :deep(p) {
             margin-bottom: 2rem;
@@ -138,6 +137,7 @@ export default {
         &._visible {
             opacity: 1;
             transform: translateY(0);
+            transition: .6s ease;
         }
 
         @include respond-to(lg) {
@@ -155,22 +155,22 @@ export default {
     &__projects {
         opacity: 0;
         transform: translateY(-10px);
-        transition: .6s .3s ease;
 
         &._visible {
             opacity: 1;
             transform: translateY(0);
+            transition: .6s .3s ease;
         }
     }
 
     &__contacts {
         opacity: 0;
         transform: translateY(-10px);
-        transition: .6s .6s ease;
 
         &._visible {
             opacity: 1;
             transform: translateY(0);
+            transition: .6s .6s ease;
         }
     }
 }
