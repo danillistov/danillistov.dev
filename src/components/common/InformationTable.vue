@@ -81,7 +81,7 @@ export default {
     width: 100%;
     height: 85vh;
     padding: 2rem;
-    background: rgba($color: #F2F2F2, $alpha: .2);
+    background: rgba($color: #F2F2F2, $alpha: .6);
     border-radius: 2rem;
     color: #000;
 
@@ -92,10 +92,6 @@ export default {
     @include respond-to(md) {
         height: 100%;
         box-sizing: border-box;
-    }
-
-    @include respond-to(sm) {
-        height: calc(100% - 40px);
     }
 
     &__contacts {
