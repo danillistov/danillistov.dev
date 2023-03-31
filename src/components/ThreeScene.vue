@@ -35,7 +35,7 @@ export default {
             if (this.isNotReady) {
                 this.handleThreeSceneError();
             }
-        }, 10000);
+        }, 20000);
 
         addEventListener('resize', () => {
             this.currentWindowSize = window.screen.width || 1000;
